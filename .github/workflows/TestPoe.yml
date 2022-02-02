@@ -55,6 +55,11 @@ jobs:
       - name: run tests and create report 
         working-directory: ./test
         run: java -cp ../testresources/junit-4.12.jar:../testresources/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore prog5121poetest.MessagesTest prog5121poetest.TasksTest
+        
+         # list contents or directory
+      - name: List contents test package after tests complete
+        working-directory: ./test/prog5121poetest
+        run: ls
 
 
       - name: Publish Unit Test Results
