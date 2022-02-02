@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: TestJava
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+       # list contents or directory
+      - name: List contents
+        run: ls
+
+      # Compiles classes to test in src
+      - name: compile classes in src directory 
+        working-directory: ./src/progpoeauto
+        run: javac -cp "../../testresouces/junit-4.12.jar" Login.java PROGPOEAUTO.java "../../test/progpoeauto/PROGPOEAUTOTest.java"  "../../test/progpoeauto/LoginTest.java"
+        
+
+        
+      # list contents or directory
+      - name: List contents test package
+        working-directory: ./test/progpoeauto
+        run: ls
+        
+      #run tests and output report 
+      - name: run tests and create report 
+        working-directory: ./test
+        run: java -cp ../testresouces/junit-4.12.jar:../testresouces/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore progpoeauto.PROGPOEAUTOTest
