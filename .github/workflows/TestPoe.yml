@@ -34,6 +34,10 @@ jobs:
         working-directory: ./src/prog5121poetest
         run: javac -cp "../../testresources/junit-4.12.jar" Messages.java PROG5121POETEST.java "../../test/prog5121poetest/PROG5121POETESTTest.java"  "../../test/prog5121poetest/MessagesTest.java"
         
+         # copy compiled classes to test directory 
+      - name : copy compiled classes to test directory 
+        working-directory: ./test/prog5121poetest
+        run: cp ../../src/prog5121poetest/Messages.class .
 
         
       # list contents or directory
