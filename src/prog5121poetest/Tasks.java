@@ -14,9 +14,10 @@ import javax.swing.JOptionPane;
 public class Tasks 
 {
     
+  
    boolean checkTaskDescription(String taskDescription)
    {
-       if (taskDescription.length() <= 150) 
+       if (taskDescription.length() <= 50) 
        {
            
           return true;
@@ -32,14 +33,15 @@ public class Tasks
    public String createTaskID(String taskName, int taskNumber, String developerName)
    {
        
-       String taskID = taskName.substring(0,3)+ ":" + 
-               Integer.toString(taskNumber)+ ":" +  developerName.substring(developerName.length()-2);
+       String taskID = taskName.substring(0,2)+ ":" + 
+               Integer.toString(taskNumber)+ ":" +  developerName.substring(developerName.length()-3);
+         
        
-       return taskID ;
+       return taskID.toUpperCase() ;
    
    }
    
-   public String printMessageValue(String taskName, int taskNumber, String taskDescription ,
+   public String printTaskDetails(String taskName, int taskNumber, String taskDescription ,
    String devFirstName, String devLastName, int taskDuration, String taskID, String taskStatus )
    {
     
@@ -50,6 +52,36 @@ public class Tasks
     
    }
    
+   public int returnTotalHours(int enteredHours)
+   {
+      
+       enteredHours+=enteredHours;
+       
+       return enteredHours;
+   
+   }
+   
+ 
+   public String [] populateDeveloperArray()
+   {
+       String [] developers = new String[] {"Mike Smith", "Edward Harrington"
+       , "Samantha Paulson", "Glenda Oberholzer"};
+ 
+       return developers;
+   
+   }
+   
+   public String [] populateTaskNameArray()
+   {
+   
+    String [] TaskName = new String[] {"Create Login", "Create Add Features"
+       , "Create Reports", "Create Arrays"};
+ 
+       return TaskName;
+   
+   }
+   
+
    
    
    
