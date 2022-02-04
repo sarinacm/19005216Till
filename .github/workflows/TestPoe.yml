@@ -43,7 +43,7 @@ jobs:
          # copy compiled classes to test directory 
       - name : copy compiled classes to test directory 
         working-directory: ./src/prog5121poetest
-        run: cp -t  "../../test/prog5121poetest/" Messages.class Tasks.class Utility.class  
+        run: cp -t  "../../test/prog5121poetest/" Messages.class Tasks.class Search.class Login.class  
 
         
       # list contents or directory
@@ -54,7 +54,7 @@ jobs:
       #run tests and output report 
       - name: run tests and create report 
         working-directory: ./test
-        run: java -cp ../testresources/junit-4.12.jar:../testresources/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore prog5121poetest.MessagesTest prog5121poetest.TasksTest prog5121poetest.SearchTest prog5121poetest.LoginTest
+        run: java -cp ../testresources/junit-4.12.jar:../testresources/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore prog5121poetest.MessagesTest prog5121poetest.TasksTest  prog5121poetest.LoginTest
         
          # list contents or directory
       - name: List contents test package after tests complete
