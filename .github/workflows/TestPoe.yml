@@ -32,7 +32,7 @@ jobs:
       # Compiles classes to test in src
       - name: compile classes in src directory 
         working-directory: ./src/prog5121poetest
-        run: javac -cp "../../testresources/junit-4.12.jar" Messages.java PROG5121POETEST.java Tasks.java Utility.java "../../test/prog5121poetest/PROG5121POETESTTest.java"  "../../test/prog5121poetest/MessagesTest.java"  "../../test/prog5121poetest/TasksTest.java"
+        run: javac -cp "../../testresources/junit-4.12.jar" Messages.java PROG5121POETEST.java Tasks.java Login.java Search.java "../../test/prog5121poetest/PROG5121POETESTTest.java"  "../../test/prog5121poetest/MessagesTest.java"  "../../test/prog5121poetest/TasksTest.java" "../../test/prog5121poetest/LoginTest.java" "../../test/prog5121poetest/SearchTest.java"
         
         
        # list contents or directory
@@ -54,7 +54,7 @@ jobs:
       #run tests and output report 
       - name: run tests and create report 
         working-directory: ./test
-        run: java -cp ../testresources/junit-4.12.jar:../testresources/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore prog5121poetest.MessagesTest prog5121poetest.TasksTest
+        run: java -cp ../testresources/junit-4.12.jar:../testresources/hamcrest-core-1.3.jar:. org.junit.runner.JUnitCore prog5121poetest.MessagesTest prog5121poetest.TasksTest prog5121poetest.SearchTest prog5121poetest.LoginTest
         
          # list contents or directory
       - name: List contents test package after tests complete
