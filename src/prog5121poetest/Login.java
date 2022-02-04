@@ -23,7 +23,7 @@ public class Login
     {
         boolean correctUserNameFormat;
         
-        if (userName.length()>=4 && userName.contains("_"))
+        if (userName.length()<=4 && userName.contains("_"))
         {
             correctUserNameFormat = true;
         }
@@ -40,7 +40,7 @@ public class Login
     public boolean checkPasswordComplexity(String password)
     {
         boolean passwordComplexity;
-        if (password.length()<=8) 
+        if (password.length()>=8) 
         {
             passwordComplexity = true;
         }

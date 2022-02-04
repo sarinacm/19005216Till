@@ -34,13 +34,22 @@ public class LoginTest {
     }
 
     @Test
-    public void testCheckPasswordComplexity() 
+    public void testCheckPasswordComplexitySuccess() 
     {
-        
+        boolean actual = login.checkPasswordComplexity("123456789");
+        assertTrue(actual);
+    }
+    
+      @Test
+    public void testCheckPasswordComplexityFailure() 
+    {
+        boolean actual = login.checkPasswordComplexity("1234");
+        assertFalse(actual);
     }
 
     @Test
-    public void testRegisterUser() {
+    public void testRegisterUser() 
+    {
     }
 
     @Test
