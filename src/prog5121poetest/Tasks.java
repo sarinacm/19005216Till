@@ -52,12 +52,32 @@ public class Tasks
     
    }
    
-   public int returnTotalHours(int enteredHours)
+   public int returnTotalHours(int numTasks,int enteredHours)
    {
+       int totalHours=0;
+       for (int i = 0; i < numTasks; i++) 
+       {
+            totalHours+=enteredHours;
+       }
       
-       enteredHours+=enteredHours;
        
-       return enteredHours;
+       return totalHours;
+   
+   }
+   
+   public int addSlackTime(int numTasks, int duration, int slackTime)
+   {
+      int totalTimeWithSlack = 0;
+       
+       for (int i = 1; i < numTasks; i++) 
+       {
+            
+            slackTime+=slackTime;
+            totalTimeWithSlack = slackTime+duration;
+            //JOptionPane.showMessageDialog(null, "slack currently is " + slack);
+       }
+   
+        return totalTimeWithSlack;
    
    }
    
@@ -80,6 +100,8 @@ public class Tasks
        return TaskName;
    
    }
+   
+  
    
 
    

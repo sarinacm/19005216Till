@@ -39,33 +39,39 @@ public class PROG5121POETEST {
           int numTasks=0;
           
   
-          menuloop:
+         
            while(true)
          {
              switch(menu)
             {
                 case 1:
-                       numTasks = numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter number of Tasks "));
-                       for (int i = 1; i <= numTasks; i++) 
+                       numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter number of Tasks "))-1;
+                       int duration=0;
+                       int totalHours=0;
+                       for (int i = 0; i <= numTasks; i++) 
                        {
                             String taskName =  JOptionPane.showInputDialog("Enter Task Name");
                             int taskNumber = i;
                             String taskDescription = JOptionPane.showInputDialog("Enter Task Description");
                             String developerFirstName = JOptionPane.showInputDialog("Enter Task Developer First Name");
                             String developerLastName = JOptionPane.showInputDialog("Enter Task Developer Last Name");
-                            int duration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration in hours"));
+                            duration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration in hours"));
                             String taskSatus = JOptionPane.showInputDialog("Please select one of the following task statuses: To Do, Done, Doing");
-                            String finalTaskDetails = tasks.printTaskDetails(taskName, taskNumber, taskDescription, developerFirstName, taskName, duration, taskName, taskSatus);
+                            String taskID = tasks.createTaskID(taskName, taskNumber, developerFirstName);
+                            String finalTaskDetails = tasks.printTaskDetails(taskName, taskNumber, taskDescription, developerFirstName, taskID, duration, taskName, taskSatus);
                             JOptionPane.showMessageDialog(null, finalTaskDetails);
-                            
-                           int totalHours = tasks.returnTotalHours(duration);
-                           
-                           JOptionPane.showMessageDialog(null, Integer.toString(totalHours));
-                           
-                           
-                           
+                  
+                          
+                       
                        }
-                       break menuloop;
+                       
+                       
+                        totalHours = tasks.returnTotalHours(numTasks,duration);
+
+                        JOptionPane.showMessageDialog(null, "Your total task hours are "+ Integer.toString(totalHours));
+                        int slack = tasks.addSlackTime(numTasks, totalHours, 10);
+                        JOptionPane.showMessageDialog(null,"Your total task hours with slack is " + slack );
+                       return;
 
                 case 2 :
                      

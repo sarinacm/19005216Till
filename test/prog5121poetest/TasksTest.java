@@ -23,10 +23,28 @@ public class TasksTest {
         String expected = "AD:1:BYN";
         String actual = testTasks.createTaskID("Add login Feature", 1, "Robyn");
         assertEquals(expected,actual);
-                
-        
+                    
     }
 
+    @Test
+    public void testCreateTaskIDinLoop()
+    {
+          String [] developerNames = new String[] {"Mike","Edward"
+       , "Samantha", "Glenda"};
+          
+          String [] taskNames ={"Create Login", "Create Add Tasks", 
+              "Create Report", "Create Search"};
+          
+          String [] testIDs = {"CR:0:IKE","CR:1:ARD","CR:2:THA","CR:3:NDA"};
+          
+          for (int i = 0; i < developerNames.length; i++) 
+          {
+             String expected =  testIDs[i];
+             String actual = testTasks.createTaskID(taskNames[i], i, developerNames[i] );
+             assertEquals(expected,actual);
+          }
+         
+    }
   
 
     @Test
@@ -36,7 +54,12 @@ public class TasksTest {
     }
 
     @Test
-    public void testPrintTaskDetails() {
+    public void testPrintTaskDetails() 
+    {
+        
+        int expected = 80;
+        int actual = testTasks.returnTotalHours(2, 40);
+        assertEquals(expected,actual);
     }
 
     @Test
@@ -51,6 +74,31 @@ public class TasksTest {
         {
             String expected = developers[i];
             String actual =capturedDevelopers[i];
+            assertEquals(expected,actual);
+        }
+    }
+
+    @Test
+    public void testAddSlackTime() 
+    {
+        // TestingLoops
+        int expected = 40;
+        int actual = testTasks.addSlackTime(2, 20, 10);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testPopulateTaskNameArray() 
+    {
+          String [] TaskName = new String[] {"Create Login", "Create Add Features"
+       , "Create Reports", "Create Arrays"};
+         
+        String[] capturedTaskNames = new String[3];
+        capturedTaskNames = testTasks.populateTaskNameArray();
+        for (int i = 0; i < capturedTaskNames.length; i++) 
+        {
+            String expected = TaskName[i];
+            String actual =capturedTaskNames[i];
             assertEquals(expected,actual);
         }
     }
